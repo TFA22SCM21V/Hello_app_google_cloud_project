@@ -1,13 +1,13 @@
 steps:
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$GCP-flaskhelloworldapp-368507/$GCP-flaskhelloworldapp', '.']
+  args: ['build', '-t', 'gcr.io/${GCP}-flaskhelloworldapp-368507/${GCP}-flaskhelloworldapp', '.']
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$GCP-flaskhelloworldapp-368507/$GCP-flaskhelloworldapp']
+  args: ['push', 'gcr.io/${GCP}-flaskhelloworldapp-368507/${GCP}-flaskhelloworldapp']
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', '$GCP-flaskhelloworldapp', '--image', 'gcr.io/$GCP-flaskhelloworldapp-368507/$GCP-flaskhelloworldapp', '--region', 'us-central1', '--platform', 'managed','--port','80']
+  args: ['run', 'deploy', '${GCP}-flaskhelloworldapp', '--image', 'gcr.io/${GCP}-flaskhelloworldapp-368507/${GCP}-flaskhelloworldapp', '--region', 'us-central1', '--platform', 'managed','--port','80']
 images:
-- gcr.io/$GCP-flaskhelloworldapp-368507/$GCP-flaskhelloworldapp
+- gcr.io/${GCP}-flaskhelloworldapp-368507/${GCP}-flaskhelloworldapp
